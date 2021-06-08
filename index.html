@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sorting Visualiser</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+  
+  <body>
+    <h1>Sorting Visualiser</h1>
+    <div id="canvas-container"></div>
+    <div class="slide-container">
+      <div>
+        <label for="speed">Speed: </label>
+        <input type="range" min="10" max="100", value="50" class="slider" id="speed">
+      </div>
+      <div>
+        <label for="size">Size: </label>
+        <input type="range" min="2" max="250", value="100" class="slider" id="size">
+      </div>
+    </div>
+    <div class="container">
+      <button id="quickSort">Quick Sort</button>
+    </div>
+    <script src="p5.min.js"></script>
+    <script src="sketch.js"></script>
+    <script src="quicksort.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
