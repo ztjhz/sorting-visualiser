@@ -1,6 +1,6 @@
 // Canvas width and height
-const canvasW = 500;
-const canvasH = 200;
+let canvasW = 500;
+let canvasH = 200;
 
 let sort_speed = 50 /* determines the speed of the sorting */
 let len = 100; /* Length of the array to be sorted */
@@ -16,6 +16,9 @@ let comparedColor = '#F0E68C'; /* khaki */
 
 
 function setup() {
+    if (canvasW > windowWidth) {
+        canvasW = windowWidth;
+    }
     let canvas = createCanvas(canvasW, canvasH);
     canvas.parent('canvas-container');
     const arrays = createArray(len);
