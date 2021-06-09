@@ -9,4 +9,8 @@
 
 - Change the visualiser speed using a slider
 
-- Sort with quick sort
+- Quick sort
+
+- Bubble sort
+
+- Insertion sort

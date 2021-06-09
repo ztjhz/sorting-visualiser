@@ -21,7 +21,6 @@ canvas {
 
 button {
   display: inline-block;
-  margin-bottom: 0;
   font-weight: 400;
   text-align: center;
   cursor: pointer;
@@ -33,6 +32,7 @@ button {
   color: #fff;
   background-color: #337ab7;
   border-color: #2e6da4;
+  margin: 5px;
 }
 
 button:hover {
@@ -99,4 +99,26 @@ hr {
   border-radius: 50%;
   background: #04AA6D; /* Green background */
   cursor: pointer; /* Cursor on hover */
+}
+
+.loader {
+  border: 10px solid #e6e6e6; /* Light Grey */
+  border-top: 10px solid #363636; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes spin {
+  0% { 
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% { 
+    transform: translateX(-50%) rotate(360deg);
+  }
 }
