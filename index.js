@@ -22,6 +22,8 @@ btns = []
 const quick_sort_btn = document.querySelector('#quickSort');
 const bubble_sort_btn = document.querySelector('#bubbleSort');
 const insertion_sort_btn = document.querySelector('#insertionSort');
+const merge_sort_btn = document.querySelector('#mergeSort');
+const selection_sort_btn = document.querySelector('#selectionSort');
 
 
 btns.push({
@@ -33,6 +35,13 @@ btns.push({
     }, {
         btn: insertion_sort_btn,
         sort: () => insertionSort(arr)
+    }, {
+       btn: merge_sort_btn,
+       sort: () => mergeSort(arr, 0, arr.length - 1)
+                   .then(() => state.fill(stateColor.sorted.value))
+    }, {
+        btn: selection_sort_btn,
+        sort: () => selectionSort(arr)
     })
 
 btns.forEach(btn => {

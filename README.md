@@ -14,3 +14,7 @@
 - Bubble sort
 
 - Insertion sort
+
+- Merge sort
+
+- Selection sort
