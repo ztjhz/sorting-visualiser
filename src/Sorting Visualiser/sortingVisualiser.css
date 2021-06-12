@@ -1,0 +1,7 @@
+.visualiser {
+  width: 80vw;
+  margin: auto;
+  border: 0.2rem solid black;
+  display: flex;
+  justify-content: center;
+}
