@@ -1,27 +1,46 @@
 import { swap, sleep } from '../Helper Functions/helper';
 
-export default async function selectionSort(arr) {
+let speed;
+
+async function selectionSort(arr, dispatch) {
   for (let i = 0; i < arr.length; i += 1) {
     let smallIndex = i;
-    // state[smallIndex] = stateColor.pivot.value; /* Color the smallest element */
+
+    /* Color the smallest element */
+    dispatch({ type: 'COLOR_PIVOT', payload: [smallIndex] });
     for (let j = i; j < arr.length; j += 1) {
-      // state[j] = stateColor.compare.value; /* being compared color */
-      await sleep();
+      /* being compared color */
+      dispatch({ type: 'COLOR_COMPARE', payload: [j] });
+      await sleep(speed);
       if (arr[j] < arr[smallIndex]) {
-        // state[smallIndex] =
-        //   stateColor.unsorted.value; /* change back to unsorted before swapping */
+        /* change back to unsorted before swapping */
+        dispatch({ type: 'COLOR_UNSORTED', payload: [smallIndex] });
         smallIndex = j;
-        // state[smallIndex] =
-        //   stateColor.pivot.value; /* color the smallest element */
+
+        /* color the smallest element */
+        dispatch({ type: 'COLOR_PIVOT', payload: [smallIndex] });
       } else {
-        // state[j] =
-        //   stateColor.unsorted.value; /* if not the smallest change back to unsorted color */
+        /* if not the smallest change back to unsorted color */
+        dispatch({ type: 'COLOR_UNSORTED', payload: [j] });
       }
     }
     swap(arr, i, smallIndex);
-    // state[i] = stateColor.sorted.value; /* element is now sorted */
+
+    /* element is now sorted */
+    dispatch({ type: 'COLOR_SORTED', payload: [i] });
     if (i !== smallIndex) {
-      // state[smallIndex] = stateColor.unsorted.value; /* unsorted color */
+      /* unsorted color */
+      dispatch({ type: 'COLOR_UNSORTED', payload: [smallIndex] });
     }
   }
+}
+
+export default async function SelectionSort(appState, dispatch) {
+  const { arrData, sortSpeed } = appState;
+  const { arr } = arrData;
+  speed = sortSpeed
+  dispatch({ type: 'START_SORT' });
+  await selectionSort(arr, dispatch);
+  arrData.sorted = true;
+  dispatch({ type: 'SORTED' });
 }

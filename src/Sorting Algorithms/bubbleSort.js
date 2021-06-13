@@ -1,26 +1,33 @@
 import { swap, sleep } from '../Helper Functions/helper';
 
-export default async function bubbleSort(arr) {
+let speed;
+
+async function bubbleSort(arr, dispatch) {
   let noSwap = false;
 
   while (!noSwap) {
     noSwap = true;
     for (let i = 0; i < arr.length - 1; i += 1) {
-      /* change color to being compared */
-      // state[i] = stateColor.compare.value;
-      // state[i + 1] = stateColor.compare.value;
+      dispatch({ type: 'COLOR_COMPARE', payload: [i, i + 1] });
 
       if (arr[i] > arr[i + 1]) {
         swap(arr, i, i + 1);
         noSwap = false;
-      } else {
-        await sleep();
       }
+      await sleep(speed);
 
-      /* change color back to unsorted */
-      // state[i] = stateColor.unsorted.value;
-      // state[i + 1] = stateColor.unsorted.value;
+      dispatch({ type: 'COLOR_UNSORTED', payload: [i, i + 1] });
     }
   }
-  // state.fill(stateColor.sorted.value); /* Change color to sorted */
+  dispatch({ type: 'COLOR_SORTED', payload: [...Array(arr.length).keys()] });
+}
+
+export default async function BubbleSort(appState, dispatch) {
+  const { arrData, sortSpeed } = appState;
+  const { arr } = arrData;
+  speed = sortSpeed;
+  dispatch({ type: 'START_SORT' });
+  await bubbleSort(arr, dispatch);
+  arrData.sorted = true;
+  dispatch({ type: 'SORTED' });
 }

@@ -1,47 +1,65 @@
 import { swap, sleep } from '../Helper Functions/helper';
 
+let speed;
+
 /* Helper function for quicksort */
-async function partition(arr, start, end) {
+async function partition(arr, start, end, dispatch) {
   let partitionIndex = start;
   const pivotIndex = end;
   const pivotValue = arr[pivotIndex];
 
-  // state[partitionIndex] =
-  //   stateColor.pivot.value; /* update color of element on canvas to partition color */
+  /* update color of element on canvas to partition color */
+  dispatch({ type: 'COLOR_PIVOT', payload: [partitionIndex] });
 
   for (let i = start; i < end; i += 1) {
-    // state[i] = stateColor.compare.value; /* change color to being compared */
+    /* change color to being compared */
+    dispatch({ type: 'COLOR_COMPARE', payload: [i] });
+
     if (arr[i] < pivotValue) {
       swap(arr, i, partitionIndex);
-      // state[partitionIndex] =
-      //   stateColor.unsorted.value; /* change back to unsorted color before swapping */
+     
+      /* change back to unsorted color before swapping */
+      dispatch({ type: 'COLOR_UNSORTED', payload: [partitionIndex] });
       partitionIndex += 1;
-      // state[partitionIndex] =
-      //   stateColor.pivot.value; /* update color of element to partition */
-    } else {
-      await sleep();
+      
+      /* update color of element to partition */
+      dispatch({ type: 'COLOR_PIVOT', payload: [partitionIndex] });
     }
-    // state[i] = stateColor.unsorted.value; /* change color back to unsorted */
+    await sleep(speed);
+    
+    /* change color back to unsorted */
+    dispatch({ type: 'COLOR_UNSORTED', payload: [i] });
   }
   swap(arr, partitionIndex, pivotIndex);
-  // state[partitionIndex] =
-  //   stateColor.sorted.value; /* change color of element to sorted */
+  
+  /* change color of element to sorted */
+  dispatch({ type: 'COLOR_SORTED', payload: [partitionIndex] });
 
   return partitionIndex;
 }
 
-export default async function quickSort(arr, start, end /* end inclusive */) {
+async function quickSort(arr, start, end, dispatch) {
   if (start >= end) {
-    // state[start] =
-    //   stateColor.sorted.value; /* change color of element to sorted  */
+    /* change color of element to sorted  */
+    dispatch({ type: 'COLOR_SORTED', payload: [start] });
     return true;
   }
 
-  const partitionIndex = await partition(arr, start, end);
+  const partitionIndex = await partition(arr, start, end, dispatch);
 
   await Promise.all([
-    quickSort(arr, start, partitionIndex - 1),
-    quickSort(arr, partitionIndex + 1, end),
+    quickSort(arr, start, partitionIndex - 1, dispatch),
+    quickSort(arr, partitionIndex + 1, end, dispatch),
   ]);
   return true;
+}
+
+export default async function QuickSort(appState, dispatch) {
+  const { arrData, sortSpeed } = appState;
+  const { arr } = arrData;
+  speed = sortSpeed;
+  dispatch({ type: 'START_SORT' });
+  await quickSort(arr, 0, arr.length - 1, dispatch);
+  arrData.sorted = true;
+  dispatch({ type: 'SORTED' });
 }

@@ -1,7 +1,129 @@
+body,
+html {
+  color: #ffffff;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-decoration: underline;
+}
+
 .visualiser {
   width: 80vw;
   margin: auto;
-  border: 0.2rem solid black;
+  padding: 1rem;
+  border: 0.2rem solid #ffffff;
   display: flex;
   justify-content: center;
+  color: black;
+}
+
+.arrayElement.unsorted {
+  background: #ffffff;
+}
+
+.arrayElement.compare {
+  background: #ffff00;
+}
+
+.arrayElement.sorted {
+  background: #48f093;
+}
+
+.arrayElement.partition {
+  background: #ff3b3b;
+}
+
+button {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  color: #fff;
+  background-color: transparent;
+  border-color: white;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #ffffff;
+  color: #212121;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+button.selected {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #212121;
+}
+
+.controllerContainer {
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 150px; /* Full-width */
+  height: 15px; /* Specified height */
+  border-radius: 5px;
+  background: #ffffff;
+  outline: none; /* Remove outline */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  border-radius: 50%;
+  opacity: 0.7;
+  background: #ff9800;
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  border-radius: 50%;
+  opacity: 0.7;
+  background: #ff9800;
+  cursor: pointer; /* Cursor on hover */
+}
+
+input,
+select {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
