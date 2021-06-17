@@ -21,6 +21,10 @@ h1 {
   color: black;
 }
 
+.arrayElement {
+  transition: height 0.2s;
+}
+
 .arrayElement.unsorted {
   background: #ffffff;
 }
