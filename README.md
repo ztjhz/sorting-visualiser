@@ -1,9 +1,24 @@
 # Sorting Visualiser
 
-[Live website](https://ztjhz.github.io/sorting-visualiser)
+![JavaScript](https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=flat-square&logo=javascript&logoColor=000000&labelColor=%23F7DF1C&color=%23FFCE5A)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=ffffff)
+![HTML5](https://img.shields.io/badge/-HTML5-%23E44D27?style=flat-square&logo=html5&logoColor=ffffff)
+![CSS3](https://img.shields.io/badge/-CSS3-%231572B6?style=flat-square&logo=css3)
+
+## [Live website](https://ztjhz.github.io/sorting-visualiser)
+
+<img src="public/sortingvisualizer.gif" alt="demo gif" width="400"/>
 
 ---
-##### Functions
+
+### Implementaion
+
+- Utilized JavaScript to implement sorting algorithms
+- Utilized React to visualize the algorithm
+
+---
+
+### Functions
 
 - Change the size of the array using a slider
 
