@@ -13,8 +13,10 @@
 
 ### Implementaion
 
-- Utilized JavaScript to implement sorting algorithms
-- Utilized React to visualize the algorithm
+- JavaScript 
+  - Implement sorting algorithms
+- React 
+  - Visualize the algorithm
 
 ---
 
