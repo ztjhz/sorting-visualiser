@@ -7,7 +7,7 @@
 
 ## [Live website](https://ztjhz.github.io/sorting-visualiser)
 
-<img src="public/sortingvisualizer.gif" alt="demo gif" width="400"/>
+<a href="https://ztjhz.github.io/sorting-visualiser" target="_blank" alt="demo site"><img src="public/sortingvisualizer.gif" alt="demo gif" width="400"/></a>
 
 ---
 
